@@ -5,3 +5,6 @@ sudo apt-get update
 
 echo "Installing Apache"
 sudo apt-get install -y apache2
+
+echo "Installing Tomcat"
+sudo apt-get install -y tomcat7
