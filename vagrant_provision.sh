@@ -11,3 +11,6 @@ sudo apt-get install -y tomcat7
 
 echo "Installing Tomcat docs"
 sudo apt-get install -y tomcat7-docs
+
+echo "Installing Tomcat7 administration web apps"
+sudo apt-get install -y tomcat7-admin
