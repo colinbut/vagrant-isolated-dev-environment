@@ -3,9 +3,11 @@
 # upating apt-get first
 sudo apt-get update
 
+#Apache Http Web Server
 echo "Installing Apache"
 sudo apt-get install -y apache2
 
+#Tomcat
 echo "Installing Tomcat"
 sudo apt-get install -y tomcat7
 echo "Installing Tomcat docs"
@@ -15,9 +17,7 @@ sudo apt-get install -y tomcat7-admin
 echo "Installing Tomcat examples"
 sudo apt-get install -y tomcat7-examples
 
-echo "Installing Git"
-sudo apt-get install -y git
-
+#Java
 echo "Installing Java 7"
 sudo apt-get install -y software-properties-common python-software-properties
 echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
@@ -26,3 +26,11 @@ sudo apt-get update
 sudo apt-get install oracle-java7-installer
 echo "Setting environment variables for Java 7"
 sudo apt-get install -y oracle-java7-set-default
+
+#Maven
+echo "Installing Maven"
+sudo apt-get install -y maven
+
+#Git
+echo "Installing Git"
+sudo apt-get install -y git
