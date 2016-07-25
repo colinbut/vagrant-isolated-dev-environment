@@ -41,4 +41,7 @@ sudo apt-get install -y nginx
 
 #MySQL Server
 echo "Installing MySQL Server"
+sudo apt-get install -y debconf-utils
+debconf-set-selections <<< "mysql-server mysql-server/root_password password root"
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password root"
 sudo apt-get install -y mysql-server
