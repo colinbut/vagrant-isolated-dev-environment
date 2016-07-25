@@ -35,6 +35,10 @@ sudo apt-get install -y maven
 echo "Installing Git"
 sudo apt-get install -y git
 
+#NGINX
+echo "Installing NGINX"
+sudo apt-get install -y nginx
+
 #MySQL Server
 echo "Installing MySQL Server"
 sudo apt-get install -y mysql-server
