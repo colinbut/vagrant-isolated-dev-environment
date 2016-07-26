@@ -10,3 +10,17 @@ The benefits of an 'isolated' development environment is many:
 2. Easily spin up a full dev environment just by one command, likewise to teardown  
 3. The environment would be very similar/pretty-much identical to what it would be like in production  
 4. Every developer in the software team/works on same project can develop using the same infrastructure  
+
+
+Provisioning
+
+Vagrant backed development environment uses Virtual Machine on VirtualBox platform.
+Contains following software installed:
+
+- Java 7
+- Git
+- Maven
+- MySQL
+- NGINX
+- Apache Tomcat7
+- Apache Web Server
