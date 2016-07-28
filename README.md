@@ -12,7 +12,7 @@ The benefits of an 'isolated' development environment is many:
 4. Every developer in the software team/works on same project can develop using the same infrastructure  
 
 
-Provisioning
+### Provisioning
 
 Vagrant backed development environment uses Virtual Machine on VirtualBox platform.
 Contains following software installed:
