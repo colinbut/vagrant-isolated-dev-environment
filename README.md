@@ -24,3 +24,5 @@ Contains following software installed:
 - NGINX
 - Apache Tomcat7
 - Apache Web Server
+- 
+Do note that this is not a full complete example of a working dev environment because every project is different with not the same software required. This is just an example 'template' that serves a ready made initial dev environment which one can use as a starting point to configure and modify where necessary on top of.
