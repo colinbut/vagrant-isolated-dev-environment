@@ -3,29 +3,42 @@
 # upating yum first
 sudo yum update
 
+# installing 'Extra Packages for Enterprise Linux'
+# yum package manager does not have all latest software on its default repository
+sudo yum install epel-release
+
 #Apache Http Web Server
 if [ ! -f /usr/lib/apache2/mpm-worker/apache2 ];
 then
 	echo "Installing Apache"
-	sudo yum install -y apache2
+	sudo yum install -y httpd
 else
 	echo "Apache already installed - skipping"
 fi
 
+echo "Starting apache"
+sudo service httpd start
+
 #Tomcat
-if [ ! -f /etc/init.d/tomcat7 ];
+if [ ! -f /etc/init.d/tomcat ];
 then
 	echo "Installing Tomcat"
-	sudo yum install -y tomcat7
+	sudo yum install -y tomcat
 	echo "Installing Tomcat docs"
-	sudo yum install -y tomcat7-docs
+	sudo yum install -y tomcat-docs-webapp
+	echo "Installing Tomcat administration package"
+	sudo yum install -y tomcat-webapp
 	echo "Installing Tomcat administration web apps"
-	sudo yum install -y tomcat7-admin
-	echo "Installing Tomcat examples"
-	sudo yum install -y tomcat7-examples
+	sudo yum install -y tomcat-admin-webapp
 else
-	echo "Tomcat 7 already installed - skipping"
+	echo "Tomcat already installed - skipping"
 fi
+
+echo "Starting Tomcat"
+sudo systemctl start tomcat
+
+echo "Enabling Tomcat service"
+sudo systemctl enable tomcat
 
 
 #Java
@@ -66,9 +79,13 @@ if [ ! -f /usr/sbin/nginx ];
 then
 	echo "Installing NGINX"
 	sudo yum install -y nginx
+	echo "Starting NGINX"
+	sudo /etc/init.d/nginx start
 else
 	echo "NGINX already installed - skipping"
 fi
+
+
 
 #MySQL Server
 if [ ! -f /usr/sbin/mysqld ];
