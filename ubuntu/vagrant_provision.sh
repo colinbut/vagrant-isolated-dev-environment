@@ -66,6 +66,8 @@ if [ ! -f /usr/sbin/nginx ];
 then
 	echo "Installing NGINX"
 	sudo apt-get install -y nginx
+	echo "Starting NGINX"
+	sudo /etc/init.d/nginx start
 else
 	echo "NGINX already installed - skipping"
 fi
