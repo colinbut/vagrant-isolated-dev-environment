@@ -5,7 +5,8 @@ sudo yum update
 
 # installing 'Extra Packages for Enterprise Linux'
 # yum package manager does not have all latest software on its default repository
-sudo yum install epel-release
+sudo yum install -y epel-release
+sudo yum install -y wget
 
 #Apache Http Web Server
 if [ ! -f /usr/lib/apache2/mpm-worker/apache2 ];
@@ -45,13 +46,10 @@ sudo systemctl enable tomcat
 if [ ! -f /usr/lib/jvm/java-7-oracle/bin/java ];
 then
 	echo "Installing Java 7"
-	sudo yum install -y software-properties-common python-software-properties
-	echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
-	sudo add-apt-repository ppa:webupd8team/java -y
-	sudo yum update
-	sudo yum install oracle-java7-installer
-	echo "Setting environment variables for Java 7"
-	sudo yum install -y oracle-java7-set-default
+	cd /opt/
+	wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz"
+	tar xzf jdk-7u79-linux-x64.tar.gz
+	cd /opt/jdk1.7.0_79/
 else
 	echo "Java 7 already installed - skipping"
 fi
@@ -91,10 +89,8 @@ fi
 if [ ! -f /usr/sbin/mysqld ];
 then
 	echo "Installing MySQL Server"
-	sudo yum install -y debconf-utils
-	debconf-set-selections <<< "mysql-server mysql-server/root_password password root"
-	debconf-set-selections <<< "mysql-server mysql-server/root_password_again password root"
 	sudo yum install -y mysql-server
+	sudo /sbin/service mysqld start
 else
 	echo "Mysql server already installed - skipping"
 fi
