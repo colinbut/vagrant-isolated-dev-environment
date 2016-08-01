@@ -27,8 +27,6 @@ then
 	sudo yum install -y tomcat
 	echo "Installing Tomcat docs"
 	sudo yum install -y tomcat-docs-webapp
-	echo "Installing Tomcat administration package"
-	sudo yum install -y tomcat-webapp
 	echo "Installing Tomcat administration web apps"
 	sudo yum install -y tomcat-admin-webapp
 else
