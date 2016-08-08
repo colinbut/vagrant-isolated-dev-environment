@@ -100,4 +100,23 @@ else
 	echo "Mysql server already installed - skipping"
 fi
 
+#SonarQube Server
+echo "Downloading Sonar"
+wget https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.5.zip
+
+echo "Unpacking Sonar"
+sudo unzip sonarqube-5.5.zip
+
+echo "Installing Sonar"
+sudo mv -v sonarqube-5.5 /opt/sonar
+
+echo "Starting Sonar Server"
+sudo /opt/sonar/bin/linux-x86-64/sonar.sh start
+
+#Sonar Runner
+cd /opt
+sudo wget http://repo1.maven.org/maven2/org/codehaus/sonar/runner/sonar-runner-dist/2.4/sonar-runner-dist-2.4.zip
+sudo unzip sonar-runner-dist-2.4.zip
+sudo ln -s sonar-runner-2.4 sonar-runner
+
 
