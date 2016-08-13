@@ -3,31 +3,6 @@
 # upating apt-get first
 sudo apt-get update
 
-#Apache Http Web Server
-if [ ! -f /usr/lib/apache2/mpm-worker/apache2 ];
-then
-	echo "Installing Apache"
-	sudo apt-get install -y apache2
-else
-	echo "Apache already installed - skipping"
-fi
-
-#Tomcat
-if [ ! -f /etc/init.d/tomcat7 ];
-then
-	echo "Installing Tomcat"
-	sudo apt-get install -y tomcat7
-	echo "Installing Tomcat docs"
-	sudo apt-get install -y tomcat7-docs
-	echo "Installing Tomcat administration web apps"
-	sudo apt-get install -y tomcat7-admin
-	echo "Installing Tomcat examples"
-	sudo apt-get install -y tomcat7-examples
-else
-	echo "Tomcat 7 already installed - skipping"
-fi
-
-
 #Java
 if [ ! -f /usr/lib/jvm/java-8-oracle/bin/java ];
 then
@@ -59,6 +34,30 @@ then
 	sudo apt-get install -y git
 else
 	echo "Git already installed - skipping"
+fi
+
+#Apache Http Web Server
+if [ ! -f /usr/lib/apache2/mpm-worker/apache2 ];
+then
+	echo "Installing Apache"
+	sudo apt-get install -y apache2
+else
+	echo "Apache already installed - skipping"
+fi
+
+#Tomcat
+if [ ! -f /etc/init.d/tomcat7 ];
+then
+	echo "Installing Tomcat"
+	sudo apt-get install -y tomcat7
+	echo "Installing Tomcat docs"
+	sudo apt-get install -y tomcat7-docs
+	echo "Installing Tomcat administration web apps"
+	sudo apt-get install -y tomcat7-admin
+	echo "Installing Tomcat examples"
+	sudo apt-get install -y tomcat7-examples
+else
+	echo "Tomcat 7 already installed - skipping"
 fi
 
 #NGINX

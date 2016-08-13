@@ -9,38 +9,6 @@ sudo yum install -y epel-release
 sudo yum install -y wget
 sudo yum install -y unzip
 
-#Apache Http Web Server
-if [ ! -f /usr/lib/apache2/mpm-worker/apache2 ];
-then
-	echo "Installing Apache"
-	sudo yum install -y httpd
-else
-	echo "Apache already installed - skipping"
-fi
-
-echo "Starting apache"
-sudo service httpd start
-
-#Tomcat
-if [ ! -f /etc/init.d/tomcat ];
-then
-	echo "Installing Tomcat"
-	sudo yum install -y tomcat
-	echo "Installing Tomcat docs"
-	sudo yum install -y tomcat-docs-webapp
-	echo "Installing Tomcat administration web apps"
-	sudo yum install -y tomcat-admin-webapp
-else
-	echo "Tomcat already installed - skipping"
-fi
-
-echo "Starting Tomcat"
-sudo systemctl start tomcat
-
-echo "Enabling Tomcat service"
-sudo systemctl enable tomcat
-
-
 #Java
 if [ ! -f /opt/jdk1.7.0_79/bin/java ];
 then
@@ -76,6 +44,38 @@ then
 else
 	echo "Git already installed - skipping"
 fi
+
+#Apache Http Web Server
+if [ ! -f /usr/lib/apache2/mpm-worker/apache2 ];
+then
+	echo "Installing Apache"
+	sudo yum install -y httpd
+else
+	echo "Apache already installed - skipping"
+fi
+
+echo "Starting apache"
+sudo service httpd start
+
+#Tomcat
+if [ ! -f /etc/init.d/tomcat ];
+then
+	echo "Installing Tomcat"
+	sudo yum install -y tomcat
+	echo "Installing Tomcat docs"
+	sudo yum install -y tomcat-docs-webapp
+	echo "Installing Tomcat administration web apps"
+	sudo yum install -y tomcat-admin-webapp
+else
+	echo "Tomcat already installed - skipping"
+fi
+
+echo "Starting Tomcat"
+sudo systemctl start tomcat
+
+echo "Enabling Tomcat service"
+sudo systemctl enable tomcat
+
 
 #NGINX
 if [ ! -f /usr/sbin/nginx ];
