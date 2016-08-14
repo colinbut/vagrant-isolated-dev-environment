@@ -103,3 +103,34 @@ sudo unzip sonar-runner-dist-2.4.zip
 sudo ln -s sonar-runner-2.4 sonar-runner
 
 
+#PHP 
+# (dependency requirement for GitList)
+echo "Installing PHP"
+sudo apt-get install -y php5
+
+#GitList
+# (A Git Repository Viewer)
+echo "Downloading GitList"
+sudo wget https://s3.amazonaws.com/gitlist/gitlist-0.5.0.tar.gz
+echo "Extracting GitList"
+sudo tar -xvzf gitlist-0.5.0.tar.gz /var/www/
+sudo rm gitlist-0.5.0.tar.gz
+
+cd /var/www/gitlist
+sudo mkdir cache
+sudo chmod 777 cache
+
+sed 's/\\/home\\/git\\/repositories\\//\\/var\\/www\\/projects/' config.ini-example > config.ini
+
+sudo service apache2 restart
+sudo a2enmod rewrite
+
+# At this point GitList should be installed 
+# It is just a matter of configuration for use
+
+# 1. Need to change /var/www/'s AllowOverride from None to All in the default Apache website config file
+# 2. Restart Apache (sudo /etc/init.d/apache2 restart)
+
+
+
+
