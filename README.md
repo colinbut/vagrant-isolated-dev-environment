@@ -1,4 +1,4 @@
-## An 'Isolated' Development Environment using Vagrant
+## An opinionated 'Isolated' Development Environment using Vagrant
 
 Automatically constructs an isolated development environment that automatically provisions software tools required for developing a software application.
 
