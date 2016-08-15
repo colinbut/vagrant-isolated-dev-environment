@@ -142,7 +142,8 @@ sudo chmod 777 cache
 
 sudo mkdir /var/www/projects/
 
-sudo sed 's/\/home\/git\/repositories\/\/var\/www\/projects/g' config.ini-example > config.ini
+sudo mv config.ini-example config.ini
+sudo sed 's%\/home\/git\/repositories%\/var\/www\/projects%g' config.ini
 
 echo "Disabling SELinux"
 sudo sed 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
