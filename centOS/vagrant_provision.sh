@@ -121,3 +121,38 @@ sudo unzip sonar-runner-dist-2.4.zip
 sudo ln -s sonar-runner-2.4 sonar-runner
 
 
+#PHP 
+# (dependency requirement for GitList)
+echo "Installing PHP"
+sudo yum install -y php
+
+#GitList
+# (A Git Repository Viewer)
+echo "Downloading GitList"
+sudo wget https://s3.amazonaws.com/gitlist/gitlist-0.5.0.tar.gz
+echo "Extracting GitList"
+sudo mv gitlist-0.5.0.tar.gz
+cd /var/www/html/
+sudo tar -xvzf gitlist-0.5.0.tar.gz
+sudo rm gitlist-0.5.0.tar.gz
+
+cd /var/www/html/gitlist
+sudo mkdir cache
+sudo chmod 777 cache
+
+sudo mkdir /var/www/projects/
+
+sed 's/\/home\/git\/repositories\/\/var\/www\/projects/g' config.ini-example > config.ini
+
+echo "Disabling SELinux"
+sed 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+
+
+# At this point GitList should be installed 
+# It is just a matter of configuration for use
+
+# 1. Reboot VM after vagrant up - so vagrant up again after shutdown
+# 2. Need to change /var/www/html's AllowOverride from None to All in the default Apache website config file
+#    (CentOS this is /etc/httpd/conf/httpd.conf)
+# 2. Restart Apache (sudo apachectl restart)
+
