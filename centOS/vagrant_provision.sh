@@ -55,7 +55,7 @@ else
 fi
 
 echo "Starting apache"
-sudo service httpd start
+sudo apachectl start
 
 #Tomcat
 if [ ! -f /etc/init.d/tomcat ];
