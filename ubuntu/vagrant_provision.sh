@@ -116,7 +116,7 @@ sudo apt-get install -y php5
 echo "Downloading GitList"
 sudo wget https://s3.amazonaws.com/gitlist/gitlist-0.5.0.tar.gz
 echo "Extracting GitList"
-sudo mv gitlist-0.5.0.tar.gz
+sudo mv gitlist-0.5.0.tar.gz /var/www/
 cd /var/www/
 sudo tar -xvzf gitlist-0.5.0.tar.gz
 sudo rm gitlist-0.5.0.tar.gz
@@ -125,7 +125,10 @@ cd /var/www/gitlist
 sudo mkdir cache
 sudo chmod 777 cache
 
-sed 's/\/home\/git\/repositories\/\/var\/www\/projects/' config.ini-example > config.ini
+sudo mkdir /var/www/projects/
+
+sudo mv config.ini-example config.ini
+sudo sed 's%\/home\/git\/repositories%\/var\/www\/projects%g' config.ini
 
 sudo service apache2 restart
 sudo a2enmod rewrite
