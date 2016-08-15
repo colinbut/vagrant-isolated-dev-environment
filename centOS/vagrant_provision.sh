@@ -131,7 +131,7 @@ sudo yum install -y php
 echo "Downloading GitList"
 sudo wget https://s3.amazonaws.com/gitlist/gitlist-0.5.0.tar.gz
 echo "Extracting GitList"
-sudo mv gitlist-0.5.0.tar.gz
+sudo mv gitlist-0.5.0.tar.gz /var/www/html
 cd /var/www/html/
 sudo tar -xvzf gitlist-0.5.0.tar.gz
 sudo rm gitlist-0.5.0.tar.gz
@@ -142,10 +142,10 @@ sudo chmod 777 cache
 
 sudo mkdir /var/www/projects/
 
-sed 's/\/home\/git\/repositories\/\/var\/www\/projects/g' config.ini-example > config.ini
+sudo sed 's/\/home\/git\/repositories\/\/var\/www\/projects/g' config.ini-example > config.ini
 
 echo "Disabling SELinux"
-sed 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+sudo sed 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 
 
 # At this point GitList should be installed 
