@@ -45,6 +45,9 @@ else
 	echo "Apache already installed - skipping"
 fi
 
+echo "Starting Apache"
+sudo service apache2 start
+
 #Tomcat
 if [ ! -f /etc/init.d/tomcat7 ];
 then
