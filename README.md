@@ -18,7 +18,7 @@ Vagrant backed development environment uses Virtual Machine on VirtualBox platfo
 Contains following software installed:
 
 - Java 7
-- Git
+- Git & GitList as a Repository Viewer
 - Maven
 - MySQL
 - NGINX
